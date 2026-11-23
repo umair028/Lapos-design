@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Paz Outdoor Environments | Pools, Spas, Outdoor Kitchens & Exteriors</title>
+<meta name="description" content="La Paz Outdoor Environments designs and builds pools, spas, outdoor kitchens and home exteriors. 30+ years of experience. Get a free quote.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0C2340;      /* deep blue instead of black */
+    --navy-2:#132F55;
+    --blue:#1F57A8;      /* logo blue */
+    --sky:#4F97C8;
+    --sun:#FDB515;       /* logo sun */
+    --palm:#009A49;      /* logo palm */
+    --ink:#0E1B2C;
+    --muted:#657285;
+    --line:#E4E8EE;
+    --soft:#F4F7FA;
+    --max:1440px;
+    --pad:clamp(16px,4vw,64px);
+    --r:8px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Inter Tight",system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button,select,input{font:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+  h1,h2,h3{letter-spacing:-.035em;line-height:1.02;font-weight:600}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink)}
+  .eyebrow::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 4px rgba(253,181,21,.22)}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;font-weight:600;font-size:15px;border:1.5px solid transparent;cursor:pointer;transition:background-color .3s,color .3s,border-color .3s,transform .3s,box-shadow .3s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn svg{width:17px;height:17px;transition:transform .3s}
+  .btn:hover svg{transform:translateX(3px)}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-navy:hover{background:var(--sun);color:var(--ink);box-shadow:0 12px 26px rgba(253,181,21,.35)}
+  .btn-line{border-color:var(--navy);color:var(--navy)}
+  .btn-line:hover{background:var(--sun);border-color:var(--sun);color:var(--ink)}
+  .btn-sun{background:var(--sun);color:var(--ink)}
+  .btn-sun:hover{background:#fff;color:var(--blue);box-shadow:0 12px 26px rgba(255,255,255,.25)}
+  .btn-glass{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.45);color:#fff;backdrop-filter:blur(6px)}
+  .btn-glass:hover{background:var(--sun);border-color:var(--sun);color:var(--ink)}
+
+  /* ---------- HEADER ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;transition:background .3s,box-shadow .3s}
+  header.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+  .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:84px}
+  .brand img{width:66px;height:66px}
+  .menu{display:flex;gap:clamp(18px,2vw,32px);list-style:none}
+  .menu>li{position:relative}
+  .menu>li>a{display:inline-flex;align-items:center;gap:6px;padding:10px 0;font-size:15px;font-weight:500;color:#77818E;transition:color .25s}
+  .menu>li>a:hover,.menu>li:hover>a,.menu>li>a.active:hover{color:var(--sun)}
+  .menu>li>a.active{color:var(--navy);font-weight:600}
+  .menu>li>a svg{width:11px;height:11px;transition:transform .25s}
+  .menu>li:hover>a svg,.menu>li:focus-within>a svg{transform:rotate(180deg)}
+  .sub{position:absolute;left:-18px;top:100%;min-width:200px;list-style:none;background:#fff;border-radius:8px;padding:8px;box-shadow:0 20px 50px rgba(12,35,64,.16);opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s}
+  .menu>li:hover .sub,.menu>li:focus-within .sub{opacity:1;visibility:visible;transform:none}
+  .sub a{display:block;padding:10px 14px;border-radius:8px;font-size:14.5px;font-weight:500;color:var(--ink);transition:.2s}
+  .sub a:hover{background:var(--sun);color:var(--ink)}
+  .nav-r{justify-self:end;display:flex;gap:10px;align-items:center}
+  .nav-r .btn{padding:10px 20px;font-size:14px}
+  .burger{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;place-items:center}
+  .burger svg{width:22px;height:22px}
+
+  /* ---------- HERO: sky, then wordmark, then cut-out house in front ---------- */
+  /* --iw house width, --fw wordmark size, --ht header space, --it top of house image.
+     Everything scales together, so the roof always covers the same part of the letters. */
+  .hero{--hx:50%;--iw:100vw;--fw:22vw;--ht:88px;--it:calc(var(--ht) + var(--fw)*.73 - var(--iw)*.079);
+    position:relative;height:min(calc(var(--it) + var(--iw)*.593),max(100svh,60vw));min-height:420px;overflow:hidden;color:#fff;padding:0;
+    background:linear-gradient(180deg,#DDE7F1 0%,#EDF2F7 40%,#F7F9FB 100%)}
+  .wordmark{position:absolute;z-index:1;left:0;right:0;top:var(--ht);height:calc(var(--fw)*.73);line-height:calc(var(--fw)*.73);font-size:var(--fw);font-weight:700;letter-spacing:-.035em;color:var(--navy);text-align:center;white-space:nowrap;user-select:none;animation:wm 1.2s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes wm{from{opacity:0;transform:translateY(22%)}}
+  .wordmark span{color:var(--blue)}
+  .house{position:absolute;z-index:2;left:var(--hx);top:var(--it);width:var(--iw);height:auto;max-width:none;aspect-ratio:2298/1363;transform:translateX(-50%)}
+  /* animated TV: a 640x360 screen warped onto the TV in the photo */
+  .tvw{position:absolute;z-index:2;left:calc(var(--hx) - var(--iw)/2);top:var(--it);width:0;height:0;transform-origin:0 0;pointer-events:none;visibility:hidden}
+  .tv{position:absolute;left:0;top:0;width:640px;height:360px;overflow:hidden;transform-origin:0 0;transform:matrix3d(-0.071460851,-0.103471658,0.000000000,-0.000196943,0.120107109,0.267910380,0.000000000,0.000060045,0.000000000,0.000000000,1.000000000,0.000000000,1551.300000000,482.400000000,0.000000000,1.000000000);background:linear-gradient(180deg,#8CC2E8 0%,#E4F1FB 62%,#fff 100%)}
+  .tv>*{position:absolute}
+  .tv-rays{left:-80px;top:-220px;width:800px;height:800px;border-radius:50%;background:repeating-conic-gradient(rgba(253,181,21,.5) 0 10deg,transparent 10deg 30deg);-webkit-mask-image:radial-gradient(#000 15%,transparent 62%);mask-image:radial-gradient(#000 15%,transparent 62%);animation:tvrays 24s linear infinite}
+  .tv-logo{left:170px;top:32px;width:300px;height:296px;animation:tvfloat 3.4s ease-in-out infinite}
+  .tv-logo img{width:100%;height:100%;filter:drop-shadow(0 6px 14px rgba(12,35,64,.3));animation:tvflip 7s cubic-bezier(.5,0,.3,1) infinite}
+  .tv-shine{left:-260px;top:-60px;width:130px;height:480px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);transform:rotate(18deg);animation:tvshine 7s ease-in-out infinite}
+  @keyframes tvrays{to{transform:rotate(360deg)}}
+  @keyframes tvfloat{50%{transform:translateY(-10px) scale(1.04)}}
+  @keyframes tvflip{0%{transform:scaleX(0)}6%{transform:scaleX(1.08)}9%,94%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+  @keyframes tvshine{0%,32%{transform:translateX(0) rotate(18deg)}56%,100%{transform:translateX(1100px) rotate(18deg)}}
+  /* animated fireplace: sits exactly over the firebox in the photo (pixel box 1612,618 - 1852,700 of 2298x1363) */
+  .fire{position:absolute;z-index:2;pointer-events:none;left:calc(var(--hx) + var(--iw)*.201480);top:calc(var(--it) + var(--iw)*.268930);width:calc(var(--iw)*.104439);height:calc(var(--iw)*.035683)}
+  .hero::after{content:"";position:absolute;z-index:3;left:0;right:0;bottom:0;height:32%;pointer-events:none;background:linear-gradient(180deg,rgba(12,20,30,0),rgba(12,20,30,.82))}
+  .hero-inner{position:absolute;z-index:4;left:0;right:0;bottom:0;padding-bottom:clamp(22px,2.6vw,40px)}
+  .hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+  .hero-copy{max-width:470px}
+  .hero-copy h1{font-size:clamp(17px,1.4vw,22px);font-weight:400;letter-spacing:-.01em;line-height:1.4;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+  .hero-feat{text-align:right;text-shadow:0 1px 14px rgba(0,0,0,.6)}
+  .hf{transition:opacity .35s}
+  .hf.sw{opacity:0}
+  .hero-feat b{display:block;font-size:18px;font-weight:600;margin-bottom:4px}
+  .hero-feat span{display:block;font-size:15px;line-height:1.5;white-space:pre-line;opacity:.92}
+
+  /* ---------- PLANNER (search bar adaptation) ---------- */
+  .planner{text-align:center;padding:100px 0 30px}
+  .planner h2{font-size:clamp(34px,3.6vw,52px)}
+  .planner > .wrap > p{color:var(--muted);max-width:460px;margin:14px auto 40px}
+  .pbar{display:grid;grid-template-columns:repeat(4,1fr) auto;align-items:center;gap:0;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px;box-shadow:0 24px 50px rgba(12,35,64,.08);max-width:1120px;margin:0 auto;text-align:left}
+  .pfield{padding:10px 22px;border-right:1px solid var(--line);position:relative}
+  .pfield:nth-child(4){border-right:0}
+  .pfield label{display:block;font-size:12.5px;color:var(--muted);font-weight:500;margin-bottom:2px}
+  .pfield select{width:100%;border:0;background:transparent;font-size:16px;font-weight:600;color:var(--ink);appearance:none;cursor:pointer;padding-right:18px;outline:none}
+  .pfield::after{content:"";position:absolute;right:22px;bottom:18px;width:7px;height:7px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg);pointer-events:none}
+  .pgo{width:58px;height:58px;border-radius:50%;background:var(--navy);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;transition:.3s}
+  .pgo:hover{background:var(--sun);color:var(--ink);transform:rotate(-12deg)}
+  .pgo svg{width:22px;height:22px}
+
+  section{padding:110px 0}
+
+  /* ---------- ABOUT ---------- */
+  .about-top{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:end;margin-bottom:46px}
+  .about-top h2{font-size:clamp(40px,4.6vw,74px);margin-top:18px}
+  .about-top p{color:var(--muted);font-size:16px;max-width:520px}
+  .strip{display:grid;grid-template-columns:2.1fr 1fr 1fr 1fr auto;gap:14px;align-items:stretch;height:clamp(240px,22vw,330px)}
+  .strip figure{position:relative;border-radius:var(--r);overflow:hidden;margin:0}
+  .strip img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
+  .strip figure:hover img{transform:scale(1.07)}
+  .strip .big::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(12,35,64,.75))}
+  .strip .big figcaption{position:absolute;left:20px;bottom:18px;z-index:2;color:#fff}
+  .strip .big figcaption b{display:block;font-size:20px;font-weight:600}
+  .strip .big figcaption span{font-size:13.5px;opacity:.85}
+  .more{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:0 18px;font-size:14px;font-weight:600;text-align:center}
+  .more i{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--navy);display:grid;place-items:center;font-style:normal;font-size:20px;transition:.3s}
+  .more:hover i{background:var(--sun);border-color:var(--sun);transform:rotate(-45deg)}
+
+  /* ---------- SERVICES ---------- */
+  .serv{background:var(--navy);color:#fff;position:relative;isolation:isolate}
+  .serv::before{content:"";position:absolute;inset:0;z-index:-1;background:url("https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=2000&q=60&fm=jpg") center/cover;opacity:.09}
+  .serv-h{text-align:center;margin-bottom:60px}
+  .serv-h .eyebrow{color:#fff}
+  .serv-h h2{font-size:clamp(36px,4vw,60px);font-weight:500;line-height:1.1;margin-top:18px}
+  .sgrid{--bd:rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(232px,auto)}
+  .sv{display:flex;flex-direction:column;justify-content:space-between;gap:34px;padding:30px;border:1px solid var(--bd);margin:0 -1px -1px 0;transition:background .3s}
+  .sv:hover,.sv:focus-visible{background:rgba(253,181,21,.12)}
+  .sv:first-child{border-radius:8px 0 0 0}
+  .sv:nth-child(3){border-radius:0 8px 8px 0}
+  .sv:nth-child(5){border-radius:0 0 8px 0}
+  .sv:nth-child(6){border-radius:0 0 8px 8px}
+  .sv svg{width:38px;height:38px;color:var(--sun);transition:transform .35s}
+  .sv:hover svg{transform:translateY(-4px)}
+  .sv h3{font-size:22px;font-weight:500;letter-spacing:-.015em;margin-bottom:8px}
+  .sv p{font-size:15.5px;color:rgba(255,255,255,.68)}
+  .sv-hi{grid-column:3;grid-row:2/4;margin:24px 0 0 24px;background:var(--sun);color:var(--ink);border-radius:8px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:60px}
+  .sv-hi b{display:block;font-size:clamp(56px,5vw,78px);font-weight:500;letter-spacing:-.04em;line-height:1;padding-bottom:18px;border-bottom:1px solid rgba(14,27,44,.2);margin-bottom:18px}
+  .sv-hi strong{font-size:22px;font-weight:500;letter-spacing:-.015em}
+  .sv-hi p{font-size:15.5px;color:rgba(14,27,44,.78)}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-top{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:end;margin-bottom:34px}
+  .proj-top h2{font-size:clamp(40px,4.6vw,74px);margin-top:18px}
+  .proj-top p{color:var(--muted);max-width:480px}
+  .tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:56px 0 48px}
+  .tabs button{padding:10px 20px;border-radius:999px;border:0;background:transparent;font-size:15px;font-weight:500;color:var(--ink);cursor:pointer;transition:.25s}
+  .tabs button:hover{color:var(--blue)}
+  .tabs button.on{background:var(--navy);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:88px 20px}
+  .pc.hide{display:none}
+  .pc .ph{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:1/1;margin-bottom:24px}
+  .pc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
+  .pc:hover .ph img{transform:scale(1.05)}
+  .pc .tag{position:absolute;left:18px;top:18px;background:var(--navy);color:#fff;font-size:13px;font-weight:500;padding:10px 20px;border-radius:999px;letter-spacing:.02em}
+  .pc h3{font-size:clamp(24px,2vw,30px);letter-spacing:-.025em;font-weight:600;line-height:1.15}
+  .pc .kind{font-size:18px;font-weight:500;letter-spacing:-.01em;margin:8px 0 12px}
+  .pc .loc{font-size:15px;line-height:1.5;color:var(--muted)}
+  .pc .feat{display:flex;gap:6px 22px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-top:14px}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{background:var(--soft)}
+  .rev-top{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+  .rev-top h2{font-size:clamp(36px,4vw,60px);margin-top:18px}
+  .score{display:flex;align-items:center;gap:14px}
+  .score b{font-size:56px;font-weight:600;letter-spacing:-.04em;line-height:1;color:var(--blue)}
+  .score small{display:block;color:var(--muted);font-size:14px}
+  .stars{color:var(--sun);letter-spacing:2px}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .rev{background:#fff;border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:22px;justify-content:space-between;border:1px solid var(--line);transition:.3s}
+  .rev:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(12,35,64,.08)}
+  .rev p{font-size:17px;line-height:1.6}
+  .who{display:flex;align-items:center;gap:12px}
+  .who i{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;font-style:normal;font-weight:600;display:grid;place-items:center}
+  .who b{display:block;font-weight:600}
+  .who span{font-size:13.5px;color:var(--muted)}
+
+  /* ---------- CTA + FOOTER (photo fades straight into the footer colour) ---------- */
+  .cta{--f:#081729;position:relative;isolation:isolate;color:#fff;text-align:center;padding:clamp(130px,12vw,190px) 0 clamp(170px,17vw,270px);background:var(--f)}
+  .cta::before{content:"";position:absolute;inset:0;z-index:-2;background:url("https://images.unsplash.com/photo-1706164971293-2d58eb66242b?w=2200&q=75&fm=jpg") center 35%/cover;filter:saturate(.75)}
+  .cta::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,23,41,.5) 0%,rgba(8,23,41,.55) 40%,var(--f) 96%)}
+  .cta h2{font-size:clamp(34px,4.6vw,70px);font-weight:500;line-height:1.1}
+  .cta p{color:rgba(255,255,255,.85);max-width:640px;margin:22px auto 38px;font-size:clamp(16px,1.2vw,18px)}
+  .btn-out{border-color:rgba(255,255,255,.85);color:#fff;padding:14px 28px}
+  .btn-out:hover{background:var(--sun);border-color:var(--sun);color:var(--ink)}
+  footer{background:#081729;color:#fff;overflow:hidden;padding:40px 0 30px}
+  .f-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+  .f-logo img{width:clamp(110px,10vw,150px);height:auto;background:#fff;border-radius:50%;padding:6px}
+  .f-mail small{display:block;font-size:15px;text-transform:uppercase;margin-bottom:8px}
+  .f-mail a{font-size:clamp(24px,2.8vw,42px);font-weight:500;letter-spacing:-.02em;line-height:1.15}
+  .f-links{display:flex;justify-content:space-between;gap:20px 40px;flex-wrap:wrap;margin:clamp(50px,5vw,80px) 0 clamp(30px,3vw,48px);font-size:16px;text-transform:uppercase}
+  .f-links nav,.f-bottom nav{display:flex;gap:12px clamp(18px,2vw,32px);flex-wrap:wrap}
+  footer a{transition:color .25s}
+  footer a:hover{color:var(--sun)}
+  .f-links a,.f-bottom a{position:relative;padding-bottom:5px;transition:color .25s,transform .3s}
+  .f-links a::after,.f-bottom a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--sun);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .f-links a:hover,.f-links a:focus-visible,.f-bottom a:hover,.f-bottom a:focus-visible{color:var(--sun);transform:translateY(-3px)}
+  .f-links a:hover::after,.f-links a:focus-visible::after,.f-bottom a:hover::after,.f-bottom a:focus-visible::after{transform:scaleX(1);transform-origin:left}
+  .f-box{container-type:inline-size}
+  .f-word{font-size:calc(100cqw/var(--k,2.72));font-weight:700;letter-spacing:-.035em;line-height:.74;padding-bottom:.02em;white-space:nowrap;user-select:none;margin-left:-.047em}
+  .f-bottom{display:flex;justify-content:space-between;gap:16px 40px;flex-wrap:wrap;font-size:13px;text-transform:uppercase;margin-top:clamp(34px,3.4vw,54px);color:rgba(255,255,255,.85)}
+
+  .drawer{position:fixed;inset:0;z-index:90;background:var(--navy);color:#fff;padding:24px;display:flex;flex-direction:column;gap:4px;transform:translateY(-100%);transition:.45s cubic-bezier(.2,.7,.2,1)}
+  .drawer.open{transform:none}
+  .drawer .x{align-self:flex-end;background:none;border:0;color:#fff;font-size:40px;cursor:pointer;line-height:1;margin-bottom:16px}
+  .drawer a{font-size:40px;font-weight:600;letter-spacing:-.03em}
+  .drawer .btn{font-size:16px;margin-top:24px;align-self:flex-start;letter-spacing:0}
+  .mbar{display:none}
+
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  @media (max-width:1080px){
+    .menu{display:none}
+    .burger{display:grid}
+    .nav{grid-template-columns:1fr auto}
+    .nav-r .btn-line{display:none}
+    .pbar{grid-template-columns:1fr 1fr;gap:6px}
+    .pfield{border-right:0;border-bottom:1px solid var(--line)}
+    .pgo{grid-column:1/-1;width:100%;border-radius:8px;height:52px}
+    .about-top,.proj-top{grid-template-columns:1fr;gap:20px}
+    .strip{grid-template-columns:1fr 1fr;height:auto}
+    .strip figure{height:220px}
+    .strip .big{grid-column:1/-1;height:300px}
+    .more{grid-column:1/-1;flex-direction:row;padding:10px}
+    .sgrid{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(210px,auto)}
+    .sgrid .sv{border-radius:0}
+    .sv-hi{grid-column:1/-1;grid-row:auto;margin:20px 0 0}
+    .grid{grid-template-columns:1fr 1fr;gap:64px 20px}
+    .rev-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:680px){
+    section{padding:80px 0}
+    .nav{height:80px}
+    .brand img{width:60px;height:60px}
+    .nav-r .btn{display:none}
+    .hero{--hx:34%;--iw:205vw;--fw:32vw;--ht:96px;height:770px;min-height:0;background:linear-gradient(180deg,#D5E3F2 0,#EEF4FA 200px,#F8FAFC 330px,#10161A 560px)}
+    .hero::after{height:50%;background:linear-gradient(180deg,rgba(12,20,30,0),rgba(14,21,27,.55) 38%,#0E151B 50%)}
+    .hero-inner{padding-bottom:30px}
+    .hero-bottom{flex-direction:column;align-items:flex-start;gap:24px}
+    .hero-feat{text-align:left}
+      .planner{padding-top:70px}
+    .pbar{grid-template-columns:1fr}
+    .sgrid{grid-template-columns:1fr;grid-auto-rows:auto}
+    .sv{padding:24px;gap:26px}
+    .serv-h{margin-bottom:40px}
+    .grid{grid-template-columns:1fr;gap:48px}
+    .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}
+    .mbar .btn{justify-content:center;padding:14px;box-shadow:0 10px 24px rgba(12,35,64,.2)}
+    .mbar .btn-navy,.mbar .btn-navy:hover{background:var(--blue);color:#fff}
+    .f-top{flex-direction:column;align-items:flex-start;gap:34px}
+    .f-links{font-size:14.5px}
+    .cta h2 br{display:none}
+    footer{padding-bottom:100px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" class="brand"><img src="assets/logo.png" alt="La Paz Outdoor Environments logo"></a>
+    <ul class="menu">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg></a>
+        <ul class="sub">
+          <li><a href="#projects" data-go="pool">Pools</a></li>
+          <li><a href="#projects" data-go="spa">Spas</a></li>
+          <li><a href="#projects" data-go="kitchen">Outdoor Kitchens</a></li>
+          <li><a href="#projects" data-go="exterior">Exteriors</a></li>
+        </ul></li>
+      <li><a href="#projects">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-r">
+      <a class="btn btn-line" href="tel:+10000000000">Call Us</a>
+      <a class="btn btn-navy" href="#contact">Free Quote</a>
+      <button class="burger" aria-label="Open menu" onclick="drawer.classList.add('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<nav class="drawer" id="drawer" aria-label="Mobile menu">
+  <button class="x" aria-label="Close menu" onclick="drawer.classList.remove('open')">&times;</button>
+  <a href="#" onclick="drawer.classList.remove('open')">Home</a>
+  <a href="#about" onclick="drawer.classList.remove('open')">About</a>
+  <a href="#services" onclick="drawer.classList.remove('open')">Services</a>
+  <a href="#projects" onclick="drawer.classList.remove('open')">Gallery</a>
+  <a href="#reviews" onclick="drawer.classList.remove('open')">Reviews</a>
+  <a href="#contact" onclick="drawer.classList.remove('open')">Contact</a>
+  <a class="btn btn-sun" href="#contact" onclick="drawer.classList.remove('open')">Get a Free Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wordmark" aria-hidden="true">La <span>Paz</span></div>
+  <img class="house" src="assets/hero-patio.webp?v=4" width="2298" height="1363" alt="Backyard at dusk with spa, covered patio, outdoor kitchen and fireplace" fetchpriority="high">
+  <div class="tvw" id="tvw" aria-hidden="true"><div class="tv"><i class="tv-rays"></i><div class="tv-logo"><img src="assets/logo.png" alt=""></div><i class="tv-shine"></i></div></div>
+  <canvas class="fire" id="fire" width="960" height="328" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <div class="hero-bottom">
+      <div class="hero-copy">
+        <h1>Pools, spas, outdoor kitchens and exteriors, designed and built as one by a team with 30+ years of experience.</h1>
+      </div>
+      <div class="hero-feat">
+        <div class="hf" id="hFeat"><b id="hTitle">Custom Pools</b><span id="hMeta">Designed around your yard
+and the way you live</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANNER -->
+<div class="planner" id="plan">
+  <div class="wrap">
+    <h2 class="rv">Plan Your Dream Backyard</h2>
+    <p class="rv">Tell us what you have in mind and we'll prepare ideas and a free, no-obligation quote.</p>
+    <form class="pbar rv" id="planner">
+      <div class="pfield"><label for="pS">Service</label><select id="pS"><option>Custom Pool</option><option>Spa / Hot Tub</option><option>Outdoor Kitchen</option><option>House Exterior</option><option>Complete Backyard</option></select></div>
+      <div class="pfield"><label for="pY">Yard Size</label><select id="pY"><option>Small</option><option selected>Medium</option><option>Large</option></select></div>
+      <div class="pfield"><label for="pB">Budget</label><select id="pB"><option>Under $50k</option><option selected>$50k – $100k</option><option>$100k – $200k</option><option>$200k+</option></select></div>
+      <div class="pfield"><label for="pT">Timeline</label><select id="pT"><option>As soon as possible</option><option selected>In 1–3 months</option><option>In 3–6 months</option><option>Just exploring</option></select></div>
+      <button class="pgo" type="submit" aria-label="Get my quote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+    </form>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-top">
+      <div class="rv"><span class="eyebrow">About La Paz</span><h2>Your Dream Backyard, Our Expertise.</h2></div>
+      <p class="rv">For more than 30 years, La Paz Outdoor Environments has designed and built pools, spas, outdoor kitchens and home exteriors for homeowners and home builders. One experienced team plans every element together, so your whole outdoor space feels complete.</p>
+    </div>
+    <div class="strip rv">
+      <figure class="big"><img src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?w=1400&q=75&fm=jpg" alt="Modern villa with pool and outdoor living area"><figcaption><b>Complete Backyards</b><span>Pool · Patio · Outdoor Living</span></figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1782203601089-55f664badd93?w=700&q=75&fm=jpg" alt="Pool with spa and lounge area"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1762117361035-5cd4f9c24795?w=700&q=75&fm=jpg" alt="Covered outdoor kitchen with bar stools"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1772040942277-b194d9d0b648?w=700&q=75&fm=jpg" alt="Hot tub set into a garden deck"></figure>
+      <a class="more" href="#projects"><i>↗</i>More projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="serv" id="services">
+  <div class="wrap">
+    <div class="serv-h rv"><span class="eyebrow">Our Services</span><h2>Everything You Need,<br>Under One Roof</h2></div>
+    <div class="sgrid rv">
+      <a class="sv" href="#projects" data-go="pool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 15V5a2 2 0 0 1 4 0M16 15V5a2 2 0 0 1 4 0M8 8h8M8 12h8"/><path d="M2 18c1.7 0 1.7 1.4 3.3 1.4S7 18 8.7 18s1.7 1.4 3.3 1.4 1.7-1.4 3.3-1.4 1.7 1.4 3.4 1.4S20.3 18 22 18"/></svg><div><h3>Custom Pools</h3><p>In-ground pools shaped around your yard and lifestyle.</p></div></a>
+      <a class="sv" href="#projects" data-go="spa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18v5a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zM8 9c-1.2-1.4 1.2-2.4 0-4M12 9c-1.2-1.4 1.2-2.4 0-4M16 9c-1.2-1.4 1.2-2.4 0-4M3 16h18"/></svg><div><h3>Spas &amp; Hot Tubs</h3><p>Built-in and stand-alone spas for year-round relaxation.</p></div></a>
+      <a class="sv" href="#projects" data-go="kitchen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16a8 8 0 0 1-16 0zM9 17l-2.5 4M15 17l2.5 4M8 7c-1-1.2 1-2.2 0-3.5M12 7c-1-1.2 1-2.2 0-3.5M16 7c-1-1.2 1-2.2 0-3.5"/></svg><div><h3>Outdoor Kitchens</h3><p>Grills, islands and bars for cooking and entertaining outside.</p></div></a>
+      <a class="sv" href="#projects" data-go="exterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-7 9 7M5 9.5V20h14V9.5M10 20v-6h4v6"/></svg><div><h3>House Exteriors</h3><p>Patios, hardscape and covered living areas.</p></div></a>
+      <a class="sv" href="#projects" data-go="all"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-7M12 14a5 5 0 1 0-4.6-7A4 4 0 0 0 8 14zM3 21h18M17 21v-4M17 17a2.5 2.5 0 0 0 2.2-3.7"/></svg><div><h3>Complete Backyards</h3><p>Every element planned and built together as one space.</p></div></a>
+      <a class="sv" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M6 21V5l8-2v18M14 9h4v12M9 8h2M9 12h2M9 16h2"/></svg><div><h3>Home Builder Projects</h3><p>Pools and outdoor spaces for new-build homes.</p></div></a>
+      <div class="sv-hi"><div><b>30+</b><strong>Years in Business</strong></div><p>Complete outdoor environments, designed and built by one team from first sketch to first swim.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<!-- PLACEHOLDER PROJECTS: replace photos, names and locations with the client's real projects -->
+<section id="projects">
+  <div class="wrap">
+    <div class="proj-top">
+      <div class="rv"><span class="eyebrow">Featured Projects</span><h2>Discover La Paz<br>Projects</h2></div>
+      <p class="rv">A selection of recent outdoor environments, from custom pools and spas to outdoor kitchens and complete exterior makeovers.</p>
+    </div>
+    <div class="tabs rv" id="tabs">
+      <button class="on" data-f="all">All Projects</button>
+      <button data-f="pool">Pools</button>
+      <button data-f="spa">Spas</button>
+      <button data-f="kitchen">Outdoor Kitchens</button>
+      <button data-f="exterior">Exteriors</button>
+    </div>
+    <div class="grid" id="grid">
+      <article class="pc rv" data-c="pool"><div class="ph"><img src="https://images.unsplash.com/photo-1762811054950-b74e0a055c80?w=1000&h=1000&fit=crop&q=78&fm=jpg" alt="Lit pool and patio at dusk" loading="lazy"><span class="tag">POOL</span></div><h3>Evening Pool &amp; Patio</h3><p class="kind">Custom in-ground pool</p><p class="loc">Street Address<br>City, State ZIP</p><div class="feat"><span>Pool</span><span>Patio</span><span>Lighting</span></div></article>
+      <article class="pc rv" data-c="exterior pool"><div class="ph"><img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1000&h=1000&fit=crop&q=78&fm=jpg" alt="Modern home exterior with pool and lawn" loading="lazy"><span class="tag">EXTERIOR</span></div><h3>Modern Home Exterior</h3><p class="kind">Exterior and poolside terrace</p><p class="loc">Street Address<br>City, State ZIP</p><div class="feat"><span>Exterior</span><span>Terrace</span><span>Pool</span></div></article>
+      <article class="pc rv" data-c="pool kitchen"><div class="ph"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1000&h=1000&fit=crop&q=78&fm=jpg" alt="Two-storey home with pool and built-in grill" loading="lazy"><span class="tag">POOL</span></div><h3>Villa Pool &amp; Grill</h3><p class="kind">Pool with built-in grill</p><p class="loc">Street Address<br>City, State ZIP</p><div class="feat"><span>Pool</span><span>Grill</span><span>Deck</span></div></article>
+      <article class="pc rv" data-c="pool exterior"><div class="ph"><img src="https://images.unsplash.com/photo-1706808849780-7a04fbac83ef?w=1000&h=1000&fit=crop&q=78&fm=jpg" alt="Backyard with pool, umbrellas and lawn" loading="lazy"><span class="tag">EXTERIOR</span></div><h3>Complete Backyard</h3><p class="kind">Pool, terrace and lawn</p><p class="loc">Street Address<br>City, State ZIP</p><div class="feat"><span>Pool</span><span>Terrace</span><span>Lawn</span></div></article>
+      <article class="pc rv" data-c="kitchen"><div class="ph"><img src="https://images.unsplash.com/photo-1762117361035-5cd4f9c24795?w=1000&h=1000&fit=crop&q=78&fm=jpg" alt="Covered outdoor kitchen with bar seating" loading="lazy"><span class="tag">OUTDOOR KITCHEN</span></div><h3>Pergola Kitchen &amp; Bar</h3><p class="kind">Covered outdoor kitchen</p><p class="loc">Street Address<br>City, State ZIP</p><div class="feat"><span>Kitchen</span><span>Bar</span><span>Pergola</span></div></article>
+      <article class="pc rv" data-c="spa pool"><div class="ph"><img src="https://images.unsplash.com/photo-1782203601089-55f664badd93?w=1000&h=1000&fit=crop&q=78&fm=jpg" alt="Stone spa beside a pool with loungers" loading="lazy"><span class="tag">SPA</span></div><h3>Stone Terrace Spa</h3><p class="kind">Built-in spa beside the pool</p><p class="loc">Street Address<br>City, State ZIP</p><div class="feat"><span>Spa</span><span>Pool</span><span>Stone deck</span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<!-- PLACEHOLDER REVIEWS: replace with the client's real Google reviews -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rev-top">
+      <div class="rv"><span class="eyebrow">Client Reviews</span><h2>Loved by Homeowners &amp; Builders</h2></div>
+      <div class="score rv"><b>5.0</b><div><span class="stars">★★★★★</span><small>Average client rating</small></div></div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev rv"><div><span class="stars">★★★★★</span><p style="margin-top:12px">“They built our pool, spa and outdoor kitchen in one project. Everything flows together and our backyard feels like a resort.”</p></div><div class="who"><i>JM</i><div><b>Customer Name</b><span>Homeowner</span></div></div></div>
+      <div class="rev rv"><div><span class="stars">★★★★★</span><p style="margin-top:12px">“Professional from the first meeting to the final walkthrough. The crew was on time, tidy and great to work with.”</p></div><div class="who"><i>SR</i><div><b>Customer Name</b><span>Homeowner</span></div></div></div>
+      <div class="rev rv"><div><span class="stars">★★★★★</span><p style="margin-top:12px">“We've partnered with La Paz on several homes. Reliable schedules and quality work our buyers love.”</p></div><div class="who"><i>DB</i><div><b>Customer Name</b><span>Home Builder</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Ready to Build Your<br> Dream Backyard with La Paz?</h2>
+    <p class="rv">Homeowners and home builders have trusted us for over 30 years. Let's make your outdoor project smooth and successful.</p>
+    <a class="btn btn-out rv" href="mailto:info@example.com?subject=Free%20quote%20request">Let's work together <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+  </div>
+</section>
+
+<!-- placeholders: address, phone, email, social and policy links -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <a class="f-logo" href="#"><img src="assets/logo.png" alt="La Paz Outdoor Environments"></a>
+      <div class="f-mail"><small>Get in touch</small><a href="mailto:info@example.com">info@example.com</a></div>
+    </div>
+    <div class="f-links">
+      <nav aria-label="Footer"><a href="#">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#projects">Gallery</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
+      <nav aria-label="Social"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a><a href="#">YouTube</a></nav>
+    </div>
+    <div class="f-box"><div class="f-word" aria-hidden="true">La Paz</div></div>
+    <div class="f-bottom"><span>© 2026 La Paz Outdoor Environments. All rights reserved</span><nav aria-label="Legal"><a href="#">Privacy policy</a><a href="#">Terms of use</a><a href="#">Legal disclaimer</a><a href="#">Cookie policy</a></nav></div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn btn-navy" href="tel:+10000000000">Call Now</a>
+  <a class="btn btn-sun" href="#contact">Free Quote</a>
+</div>
+
+<script>
+  const hdr=document.getElementById('hdr'), drawer=document.getElementById('drawer');
+  addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>10),{passive:true});
+
+  /* reveal on scroll */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+
+  /* hero: the four services rotate on their own */
+  (function(){
+    const d=[['Custom Pools','Designed around your yard\nand the way you live'],['Spas & Hot Tubs','Year-round relaxation,\nalone or beside a pool'],['Outdoor Kitchens','Grills, islands and bars\nfor cooking outside'],['House Exteriors','Patios, hardscape and\ncovered living areas']];
+    let i=0; const go=n=>{i=(n+d.length)%d.length;document.getElementById('hTitle').textContent=d[i][0];document.getElementById('hMeta').textContent=d[i][1]};
+    const f=document.getElementById('hFeat');
+    if(!matchMedia('(prefers-reduced-motion:reduce)').matches) setInterval(()=>{f.classList.add('sw');setTimeout(()=>{go(i+1);f.classList.remove('sw')},350)},4000);
+  })();
+
+  /* Services dropdown: open the gallery on that service */
+  document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=>document.querySelector('#tabs [data-f='+a.dataset.go+']').click()));
+
+  /* project filter tabs */
+  document.getElementById('tabs').addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));
+    const f=b.dataset.f;
+    document.querySelectorAll('#grid .pc').forEach(c=>{c.classList.toggle('hide',f!=='all'&&!c.dataset.c.split(' ').includes(f));c.classList.add('in')});
+  });
+
+  /* planner: opens an email with the chosen options (connect to a form service when hosted) */
+  document.getElementById('planner').addEventListener('submit',e=>{
+    e.preventDefault();
+    const v=id=>document.getElementById(id).value;
+    const body=`Service: ${v('pS')}%0D%0AYard size: ${v('pY')}%0D%0ABudget: ${v('pB')}%0D%0ATimeline: ${v('pT')}`;
+    location.href='mailto:info@example.com?subject=Free%20quote%20request&body='+body;
+  });
+
+  /* nav highlight for the section in view */
+  (function(){
+    const links=[...document.querySelectorAll('.menu>li>a')];
+    const map=links.map(a=>({a,el:a.getAttribute('href')==='#'?null:document.querySelector(a.getAttribute('href'))}));
+    function spy(){const y=scrollY+innerHeight*.35;let cur=map[0];map.forEach(m=>{if(m.el&&m.el.offsetTop<=y)cur=m});
+      if(innerHeight+scrollY>=document.body.scrollHeight-4)cur=map[map.length-1];links.forEach(a=>a.classList.toggle('active',a===cur.a))}
+    addEventListener('scroll',spy,{passive:true});spy();
+  })();
+
+  /* keep the animated TV the same scale as the hero photo */
+  (function(){
+    const w=document.getElementById('tvw'), h=document.querySelector('.house');
+    if(!w||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const fit=()=>{w.style.transform='scale('+h.offsetWidth/2298+')';w.style.visibility='visible'};
+    new ResizeObserver(fit).observe(h); if(h.complete)fit(); else h.addEventListener('load',fit);
+  })();
+
+  /* living flame: covers the still flame in the photo with a moving one */
+  (function(){
+    const c=document.getElementById('fire'); if(!c||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const g=c.getContext('2d'), S=4, OX=1612, OY=618, box=new Image();
+    const spots=[[1641,1],[1650,.5],[1661,.65],[1668,.5],[1675,1.1],[1684,.9],[1690,.6],[1700,.7],[1708,1.1],[1718,.85],[1727,.55],[1737,1.15],[1746,.5],[1754,.7],[1763,.6],[1771,.95],[1780,.5],[1789,.75],[1798,.5],[1806,.95],[1815,.5]];
+    const baseY=x=>679+(x-1634)*17/186;
+    let ps=[], on=true, last=0, raf=0;
+    function spot(){const r=document.createElement('canvas');r.width=r.height=64;const q=r.getContext('2d');return (a,b,d)=>{q.clearRect(0,0,64,64);const w=q.createRadialGradient(32,32,0,32,32,32);w.addColorStop(0,a);w.addColorStop(.45,b);w.addColorStop(1,d);q.fillStyle=w;q.fillRect(0,0,64,64);const o=document.createElement('canvas');o.width=o.height=64;o.getContext('2d').drawImage(r,0,0);return o}}
+    const mk=spot(), hot=mk('rgba(255,236,170,.85)','rgba(255,178,48,.45)','rgba(255,120,0,0)'), mid=mk('rgba(255,176,50,.6)','rgba(255,120,10,.3)','rgba(220,60,0,0)'), low=mk('rgba(255,120,15,.4)','rgba(210,70,0,.18)','rgba(150,30,0,0)'), glow=mk('rgba(255,150,30,.5)','rgba(255,120,0,.18)','rgba(255,100,0,0)');
+    function add(t){
+      for(const s of spots){
+        const f=.62+.38*Math.sin(t*.0021+s[0]*1.7)+.22*Math.sin(t*.0057+s[0]*.9);
+        if(Math.random()<.85) ps.push({x:s[0]+(Math.random()-.5)*5,y:baseY(s[0])-1,v:(52+30*Math.random())*s[1]*(.7+.5*f),a:0,l:.58+.5*Math.random(),r:3.8+2.4*Math.random()*s[1],p:Math.random()*6.3,k:s[0]});
+      }
+      if(Math.random()<.05){const s=spots[Math.random()*spots.length|0];ps.push({x:s[0],y:baseY(s[0])-10,v:34,a:0,l:.9,r:.9,p:Math.random()*6,k:s[0],sp:1})}
+    }
+    function frame(t){
+      raf=requestAnimationFrame(frame); if(t-last<28) return;
+      const dt=Math.min(.05,(t-last)/1000||.03); last=t; add(t);
+      g.globalCompositeOperation='source-over'; g.drawImage(box,0,0,c.width,c.height);
+      g.save(); g.beginPath(); g.moveTo(44,14); g.lineTo(930,52); g.lineTo(930,300); g.lineTo(700,312); g.lineTo(44,246); g.closePath(); g.clip();
+      g.globalCompositeOperation='lighter';
+      g.globalAlpha=.55+.18*Math.sin(t*.006)+.1*Math.sin(t*.0143); g.drawImage(glow,60,110,740,250);
+      ps=ps.filter(p=>(p.a+=dt)<p.l);
+      for(const p of ps){
+        const q=p.a/p.l, y=p.y-p.v*p.a, x=p.x+Math.sin(p.p+t*.005+y*.16)*2.6*q+Math.sin(t*.0017+p.k*.05)*3*q*q;
+        const r=p.r*(p.sp?1:1-.8*q), w=r*S*2, h=w*(p.sp?1:2);
+        g.globalAlpha=(1-q)*(p.sp?.9:.85); g.drawImage(q<.3?hot:q<.62?mid:low,(x-OX)*S-w/2,(y-OY)*S-h/2,w,h);
+      }
+      g.restore(); g.globalAlpha=1;
+    }
+    box.onload=()=>new IntersectionObserver(e=>{cancelAnimationFrame(raf);if(e[0].isIntersecting)raf=requestAnimationFrame(frame)}).observe(c);
+    box.src='assets/hero-firebox.webp';
+  })();
+</script>
+</body>
+</html>
